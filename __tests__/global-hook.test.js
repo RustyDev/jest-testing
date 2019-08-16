@@ -34,3 +34,16 @@ it("Authenticate buttons should work", () => {
   expect(authenticated.textContent).toBe("false")
 })
 
+it("Play button should init player", () => {
+  const { container } = render(<App />)
+
+  const playerStatus = getByTestId(container, "idPlayerStatus")
+  const playButton = getByTestId(container, "idPlayButton")
+
+  expect(playerStatus.textContent).toBe("false|false")
+
+  fireEvent.click(playButton)
+  expect(playerStatus.textContent).toBe("true|true")
+
+})
+
