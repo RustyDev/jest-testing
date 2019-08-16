@@ -26,8 +26,11 @@ function App() {
   return (
     <>
       <p data-testid="idAuthenticated">{ globalState.authenticated.toString() }</p>
-      <button onClick={login}>Login</button>
-      <button onClick={logout}>Logout</button>
+
+      { globalState.authenticated ? 
+      <button onClick={logout} data-testid="idLogoutButton">Logout</button> : 
+      <button onClick={login} data-testid="idLoginButton">Login</button>
+      }
     </>
   )
 }
