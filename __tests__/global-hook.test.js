@@ -20,15 +20,17 @@ it("App loads with initial state of logged out", () => {
 it("Authenticate buttons should work", () => {
   const { container } = render(<App />)
 
-  const login = getByTestId(container, "idAuthenticated")
-  const logout = getByTestId(container, "idNotAuthenticated")
+  const authenticated = getByTestId(container, "idAuthenticated")
+  const login = getByTestId(container, "idLoginButton")
 
-  expect(login.textContent).toBe("false")
+  expect(authenticated.textContent).toBe("false")
 
   fireEvent.click(login)
-  expect(login.textContent).toBe("true")
+  expect(authenticated.textContent).toBe("true")
+
+  const logout = getByTestId(container, "idLogoutButton")
 
   fireEvent.click(logout)
-  expect(login.textContent).toBe("false")
+  expect(authenticated.textContent).toBe("false")
 })
 

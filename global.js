@@ -19,17 +19,15 @@ const useGlobal = useGlobalHook(React, initialState, actions)
 function App() {
 
   const [globalState, globalActions] = useGlobal()
+  
   const login = () => globalActions.login()
   const logout = () => globalActions.logout()
 
   return (
     <>
-      <button onClick={login} data-testid="idAuthenticated">
-        { globalState.authenticated.toString() }
-      </button>
-      <button onClick={logout} data-testid="idNotAuthenticated">
-        { globalState.authenticated.toString() }
-      </button>
+      <p data-testid="idAuthenticated">{ globalState.authenticated.toString() }</p>
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
     </>
   )
 }
